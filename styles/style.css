@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+:root {
+    --vibrant-coral: #ED6A5A;
+    --vibrant-coral-dark:#eb3535;
+    --lemon-chiffon: #F4F1BB;
+    --ashe-grey: #9BC1BC;
+    --soft-linen: #E6EBE0;
+    --strong-cyan-soft: #36c9c62d;
+    --strong-cyan: #36C9C6;
+    --strong-cyan-dark: #258381;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: var(--strong-cyan-dark);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.603);
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    box-shadow: inset 0px -6px 8px -6px rgba(0, 0, 0, 0.418);
+}
+
+main {
+    background-color: var(--soft-linen);
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+nav {
+    background-color: white;
+    width: 70%;
+    padding: 3rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+    border-radius: 8px;
+}
+
+#nome-habito {
+    padding: 1.2rem;
+    font-size: 1.3rem;
+    width: 80%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#nome-habito:focus {
+    outline: none;
+}
+
+#adicionar {
+    background-color: var(--strong-cyan);
+    color: white;
+    padding: 1.2rem;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.397);
+    border-radius: 8px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#adicionar:hover {
+    background-color: var(--strong-cyan-dark)
+}
+
+section {
+    background-color: white;
+    width: 70%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    gap: 1rem;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+    padding: 3rem;
+}
+
+.novo-habito {
+    background-color: white;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+}
+
+.habito-icone {
+    padding: 0.8rem;
+    font-size: 2rem;
+    flex-grow: .5;
+    color: var(--strong-cyan);
+}
+
+.habito-nome {
+    flex-grow: 50;
+    font-size: 1.4rem;
+}
+
+.excluir-habito {
+    background: var(--vibrant-coral);
+    color: white;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.301);
+}
+
+.excluir-habito:hover {
+    background-color:var(--vibrant-coral-dark)
+}
+
+.novo-habito-checado {
+    background-color: var(--strong-cyan-soft);
+    color: gray;
+    text-decoration: line-through;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+}
+
+#contadores {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 1.7rem;
+}

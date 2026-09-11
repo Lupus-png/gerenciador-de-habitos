@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de hábitos</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <header>
+        <h1>Meus Hábitos</h1>
+    </header>
+    <main>
+        <nav>
+            <input id="nome-habito" type="text" placeholder="Novo habito...">
+            <button id="adicionar">Adicionar<i class="fa-solid fa-plus"></i></button>
+        </nav>
+        <section id="lista-habitos">
+            <div class="novo-habito">
+                <div class="habito-icone">
+                    <i class="fa-regular fa-circle"></i>
+                </div>
+                <div class="habito-nome">
+                    nome do habito
+                </div>
+                <div class="habito-excluir">
+                    <button class="excluir-habito"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                </div>
+            </div>
+            <div class="novo-habito-checado">
+                <div class="habito-icone">
+                    <i class="fa-solid fa-circle"></i>
+                </div>
+                <div class="habito-nome">
+                    nome do habito
+                </div>
+                <div class="habito-excluir">
+                    <button class="excluir-habito"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                </div>
+            </div>
+            <div id="contadores">
+                <p id="totais">Hábitos : 0</p>
+                <p id="concluidos">Concluídos: 0</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
