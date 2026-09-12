@@ -88,14 +88,23 @@ section {
     padding: 3rem;
 }
 
+#lista-habitos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .novo-habito {
     background-color: white;
-    width: 90%;
+    width: 95%;
     display: flex;
     align-items: center;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+    cursor: pointer;
 }
 
 .habito-icone {
@@ -127,12 +136,13 @@ section {
     background-color: var(--strong-cyan-soft);
     color: gray;
     text-decoration: line-through;
-    width: 90%;
+    width: 95%;
     display: flex;
     align-items: center;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.404);
+    cursor: pointer;
 }
 
 #contadores {
