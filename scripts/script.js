@@ -1,12 +1,50 @@
 const nomeHabito = document.getElementById('nome-habito')
 const adicionar = document.getElementById('adicionar')
 const listaHabitos = document.getElementById('lista-habitos')
+const totais = document.getElementById('totais')
+const concluidos = document.getElementById('concluidos')
 let habitos = []
 
+
+function mostrarNaTela() {
+    listaHabitos.innerHTML = ''                     // limpa a lista, pra não duplicar o que ja tem na tela
+
+    habitos.forEach((item, index) => {               // percorre todo o array, para mostrar os nomes dos itens na tela
+        listaHabitos.innerHTML += `<div class="${item.concluido? "novo-habito-checado": "novo-habito"}" data-index=${index}>
+            <div class="habito-icone">
+                <i class="${item.concluido? "fa-solid fa-circle-check": "fa-regular fa-circle"}"></i>
+            </div>
+            <div class="habito-nome">
+                ${item.nome}
+            </div>
+            <div class="habito-excluir">
+                <button class="excluir-habito"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+            </div>
+        </div>`
+    })
+}
+
+function atualizarContadores() {
+    totais.textContent = `Hábitos: ${habitos.length}`                               // conta a quantidade, objetos no array
+    
+    const feitas = habitos.reduce((cont, num) => cont += num.concluido === true, 0) // 'feitas' recebe um reduce, que adiciona no contador +1 quando concluidos for true
+    concluidos.textContent = `Concluidos: ${feitas}`                                // mostra a quantidade de concluidas
+} 
+
+
 adicionar.addEventListener('click', () => {
-    const novoHabito = {
-        nome: nomeHabito.value,
-        concluido: false
+    if(nomeHabito.value === '') {                       // validação de campo vazio
+        window.alert('O campo não pode estar vazio!')
+
+    } else {        
+        const novoHabito = {                            // cria um novo objeto
+            nome: nomeHabito.value,
+            concluido: false
+        }
+        habitos.push(novoHabito)                        // adiciona um objeto no array
+        nomeHabito.value = ''                           // limpa o input
+        mostrarNaTela()                                 // chamo a função de mostrar na tela
+        atualizarContadores()                           // chamo a função de atualizar os contadores
     }
 })
 
