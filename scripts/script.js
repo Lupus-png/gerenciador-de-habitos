@@ -3,8 +3,9 @@ const adicionar = document.getElementById('adicionar')
 const listaHabitos = document.getElementById('lista-habitos')
 const totais = document.getElementById('totais')
 const concluidos = document.getElementById('concluidos')
-let habitos = []
 
+let habitos = JSON.parse(localStorage.getItem('habitos')) || []     // recuprando localStorage e convertendo novamente
+mostrarNaTela()
 
 function mostrarNaTela() {
     listaHabitos.innerHTML = ''                     // limpa a lista, pra não duplicar o que ja tem na tela
@@ -31,6 +32,10 @@ function atualizarContadores() {
     concluidos.textContent = `Concluidos: ${feitas}`                                // mostra a quantidade de concluidas
 } 
 
+function salvarHabitos() {
+    localStorage.setItem('habitos', JSON.stringify(habitos))    // criando localStorage e convertendo
+}
+
 
 adicionar.addEventListener('click', () => {
     if(nomeHabito.value === '') {                       // validação de campo vazio
@@ -42,6 +47,9 @@ adicionar.addEventListener('click', () => {
             concluido: false
         }
         habitos.push(novoHabito)                        // adiciona um objeto no array
+
+        salvarHabitos()                                 // chamando a função do localStorage
+
         nomeHabito.value = ''                           // limpa o input
         mostrarNaTela()                                 // chamo a função de mostrar na tela
         atualizarContadores()                           // chamo a função de atualizar os contadores
@@ -62,6 +70,15 @@ listaHabitos.addEventListener('click', (event) => {                           //
     } else if (marcar){                                                       // se chamar 'marcar'
         habitos[index].concluido = !habitos[index].concluido                  // se o habito com aquele index, for true ele fica false, se for false fica true
     }
+
+    salvarHabitos()                                                           // chamando a função do localStorage
+
     mostrarNaTela()
     atualizarContadores()
+})
+
+nomeHabito.addEventListener('keydown', (clic) => {
+    if (clic.key === 'Enter') {
+        adicionar.click();
+    }
 })

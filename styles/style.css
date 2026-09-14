@@ -116,7 +116,9 @@ section {
 
 .habito-nome {
     flex-grow: 50;
+    min-width: 0;
     font-size: 1.4rem;
+    overflow-wrap: break-word;
 }
 
 .excluir-habito {
@@ -151,4 +153,48 @@ section {
     justify-content: space-between;
     width: 80%;
     font-size: 1.7rem;
+}
+
+@media (max-width: 600px) {
+    nav, section {
+        width: 95%;
+        padding: 1.2rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    #nome-habito {
+        width: 100%;
+    }
+
+    #adicionar {
+        padding: 1rem;
+    }
+
+    .novo-habito {
+        padding: 12px;
+    }
+
+    .habito-nome {
+        font-size: 1.1rem;
+        min-width: 0;
+        overflow-wrap: break-word;
+    }
+
+    .habito-icone {
+        padding: 0px;
+    }
+
+    .excluir-habito {
+        padding: 10px;
+        
+    }
+
+    #contadores {
+        text-align: center;
+        font-size: 1.3rem;
+        padding: 0px;
+    }
 }
