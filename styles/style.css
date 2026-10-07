@@ -121,6 +121,37 @@ section {
     overflow-wrap: break-word;
 }
 
+.editar-habito {
+    background: var(--strong-cyan);
+    color: white;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.301);
+    margin-right: 10px;
+}
+
+.edit-input {
+    padding: .3rem;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.salvar-habito {
+    background: var(--strong-cyan-dark);
+    color: white;
+    padding: .4rem;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.301);
+    margin-right: 10px;
+}
+
+.editar-habito:hover {
+    background-color: #258381;
+}
+
 .excluir-habito {
     background: var(--vibrant-coral);
     color: white;
