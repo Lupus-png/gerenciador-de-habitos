@@ -112,7 +112,7 @@ limparLista.addEventListener('click', (event) => {
 
 
 listaHabitos.addEventListener('click', (event) => {                           // sempre que clicar em algo da lista, passa um evento
-    if (event.target.tagName === 'INPUT') {                                   // sempre que o click for em um input, continue o codigo (sem fazer nada)
+    if (event.target.tagName === 'INPUT') {                                   // sempre que o click for em um input, encerre a função (sem executar o resto do evento)
         return
     }
     
@@ -122,7 +122,7 @@ listaHabitos.addEventListener('click', (event) => {                           //
     const salvar = event.target.closest('.salvar-habito')
 
     if (!marcar) return                                                       // se marcar nao existir
-    const index = Number(marcar.dataset.index)                                // 'index' recebe o data-index de marcar(click na classe)
+    const index = Number(marcar.dataset.index)                                // pega o valor do atributo data-index do hábito e converte o valor de string para Number
     
     if (excluir) {                                                            // se chamar 'excluir'
         habitos = habitos.filter((x, indice) => indice !== index)             // cria um novo array filtrando, se o indice for diferente do index, poe na lista(array)
