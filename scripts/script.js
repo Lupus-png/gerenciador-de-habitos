@@ -3,21 +3,45 @@ const adicionar = document.getElementById('adicionar')
 const listaHabitos = document.getElementById('lista-habitos')
 const totais = document.getElementById('totais')
 const concluidos = document.getElementById('concluidos')
+const filtroTodos = document.getElementById('filtro-todos')
+const filtroPendentes = document.getElementById('filtro-pendentes')
+const filtroConcluidos = document.getElementById('filtro-concluidos')
+
+let filtroAtual = 'todos'                                           // guarda qual filtro o usuário escolheu
 
 let habitos = JSON.parse(localStorage.getItem('habitos')) || []     // recuprando localStorage e convertendo novamente
 mostrarNaTela()
 atualizarContadores()
 
 function mostrarNaTela() {
-    listaHabitos.innerHTML = ''                     // limpa a lista, pra não duplicar o que ja tem na tela
+    listaHabitos.innerHTML = ''                                     // limpa a lista, pra não duplicar o que ja tem na tela
 
-    habitos.forEach((item, index) => {               // percorre todo o array, para mostrar os nomes dos itens na tela
-        listaHabitos.innerHTML += `<div class="${item.concluido? "novo-habito-checado": "novo-habito"}" data-index=${index}>
+    let habitosParaMostrar = habitos.map((item, index) => {         // map percorre o array e cria um novo objeto para cada hábito (um bojeto dentro do outro)
+        return {                                                    // retorna item(que é um objeto de habitos) e index(o indice desse habito que fica salvo)
+            item: item,
+            index: index
+        }
+    })
+
+    if (filtroAtual === 'pendentes') {
+        habitosParaMostrar = habitosParaMostrar.filter(item => item.item.concluido === false)       // filter faz a validação se está concluida ou nao
+
+    } else if (filtroAtual === 'concluidos') {
+        habitosParaMostrar = habitosParaMostrar.filter(item => item.item.concluido === true)        // o primeiro item é um auxiliar pelo map, o segundo é o objeto original
+    }
+
+
+    habitosParaMostrar.forEach((item) => {                          // percorre todo o array, para mostrar os nomes dos itens na tela
+
+    const habito = item.item                                        // acessa o hábito original que foi guardado dentro do objeto auxiliar
+    const index = item.index                                        // recupera o indice original do habito
+
+        listaHabitos.innerHTML += `<div class="${habito.concluido? "novo-habito-checado": "novo-habito"}" data-index=${index}>
             <div class="habito-icone">
-                <i class="${item.concluido? "fa-solid fa-circle-check": "fa-regular fa-circle"}"></i>
+                <i class="${habito.concluido? "fa-solid fa-circle-check": "fa-regular fa-circle"}"></i>
             </div>
             <div class="habito-nome">
-                ${item.nome}
+                ${habito.nome}
             </div>
             <div class="habito-editar">
                 <button class="editar-habito"><i class="fa-solid fa-pen"></i> Editar</button>
@@ -28,6 +52,7 @@ function mostrarNaTela() {
         </div>`
     })
 }
+
 
 function atualizarContadores() {
     totais.textContent = `Hábitos: ${habitos.length}`                               // conta a quantidade, objetos no array
@@ -58,6 +83,25 @@ adicionar.addEventListener('click', () => {
         mostrarNaTela()                                 // chamo a função de mostrar na tela
         atualizarContadores()                           // chamo a função de atualizar os contadores
     }
+})
+
+// um evento pra cada botão, cada botão passa um valor para a variavel filtroAtual e atualiza a tela
+filtroTodos.addEventListener('click', (event) => {
+    filtroAtual = 'todos'
+    console.log(filtroAtual)
+    mostrarNaTela()
+})
+
+filtroPendentes.addEventListener('click', (event) => {
+    filtroAtual = 'pendentes'
+    console.log(filtroAtual)
+    mostrarNaTela()
+})
+
+filtroConcluidos.addEventListener('click', (event) => {
+    filtroAtual = 'concluidos'
+    console.log(filtroAtual)
+    mostrarNaTela()
 })
 
 
@@ -96,6 +140,7 @@ listaHabitos.addEventListener('click', (event) => {                           //
     mostrarNaTela()
     atualizarContadores()
 })
+
 
 nomeHabito.addEventListener('keydown', (clic) => {
     if (clic.key === 'Enter') {

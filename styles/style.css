@@ -88,6 +88,28 @@ section {
     padding: 3rem;
 }
 
+#botoes {
+    width: 90%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.botao {
+    background: var(--strong-cyan-dark);
+    color: white;
+    padding: .7rem;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.301);
+    margin-right: 10px;
+}
+
+.botao:hover {
+    background: var(--strong-cyan);
+}
+
 #lista-habitos {
     width: 100%;
     display: flex;
