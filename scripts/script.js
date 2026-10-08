@@ -6,6 +6,7 @@ const concluidos = document.getElementById('concluidos')
 const filtroTodos = document.getElementById('filtro-todos')
 const filtroPendentes = document.getElementById('filtro-pendentes')
 const filtroConcluidos = document.getElementById('filtro-concluidos')
+const limparLista = document.getElementById('limpar-lista')
 
 let filtroAtual = 'todos'                                           // guarda qual filtro o usuário escolheu
 
@@ -13,6 +14,7 @@ let habitos = JSON.parse(localStorage.getItem('habitos')) || []     // recuprand
 mostrarNaTela()
 atualizarContadores()
 
+//FUNÇÕES
 function mostrarNaTela() {
     listaHabitos.innerHTML = ''                                     // limpa a lista, pra não duplicar o que ja tem na tela
 
@@ -53,7 +55,6 @@ function mostrarNaTela() {
     })
 }
 
-
 function atualizarContadores() {
     totais.textContent = `Hábitos: ${habitos.length}`                               // conta a quantidade, objetos no array
     
@@ -65,7 +66,7 @@ function salvarHabitos() {
     localStorage.setItem('habitos', JSON.stringify(habitos))    // criando localStorage e convertendo
 }
 
-
+//BOTÕES
 adicionar.addEventListener('click', () => {
     if(nomeHabito.value === '') {                       // validação de campo vazio
         window.alert('O campo não pode estar vazio!')
@@ -85,23 +86,28 @@ adicionar.addEventListener('click', () => {
     }
 })
 
+
 // um evento pra cada botão, cada botão passa um valor para a variavel filtroAtual e atualiza a tela
 filtroTodos.addEventListener('click', (event) => {
     filtroAtual = 'todos'
-    console.log(filtroAtual)
     mostrarNaTela()
 })
 
 filtroPendentes.addEventListener('click', (event) => {
     filtroAtual = 'pendentes'
-    console.log(filtroAtual)
     mostrarNaTela()
 })
 
 filtroConcluidos.addEventListener('click', (event) => {
     filtroAtual = 'concluidos'
-    console.log(filtroAtual)
     mostrarNaTela()
+})
+
+limparLista.addEventListener('click', (event) => {
+    habitos = habitos.filter(item => item.concluido === false)                // remove da lista original, todos os ja concluidos
+    salvarHabitos()                                                           
+    mostrarNaTela()
+    atualizarContadores()
 })
 
 

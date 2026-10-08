@@ -106,6 +106,14 @@ section {
     margin-right: 10px;
 }
 
+#limpar-lista {
+    margin-left: auto;
+}
+
+#limpar-lista:hover {
+    background-color: var(--vibrant-coral-dark);
+}
+
 .botao:hover {
     background: var(--strong-cyan);
 }
